@@ -80,7 +80,6 @@ class App extends Component {
   };
 
   onPictureSubmit = () => {
-    console.log("click");
     this.setState({ imageUrl: this.state.input });
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
@@ -92,7 +91,11 @@ class App extends Component {
             body: JSON.stringify({
               id: this.state.user.id
             })
-          });
+          })
+            .then(response => response.json())
+            .then(count => {
+              this.setState(Object.assign(this.state.user, { entries: count }));
+            });
         }
         return this.displayFaceBox(this.calculateFaceLocation(response));
       })
