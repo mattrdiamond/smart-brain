@@ -69,7 +69,7 @@ class Register extends React.Component {
                   type="email"
                   name="email-address"
                   id="email-address"
-                  onChange={this.onPasswordChange}
+                  onChange={this.onEmailChange}
                 />
               </div>
               <div className="mv3">
